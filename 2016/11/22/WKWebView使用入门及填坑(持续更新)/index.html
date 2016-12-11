@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>WKWebView使用入门及填坑(持续更新) | love</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="forsigner,前端,设计,Hexo主题,前端开发,用户体验,设计,frontend,design,nodejs,JavaScript" />
+  
+
+  <meta name="description" content="iOS 8.0苹果推出WebKit，用来替代UIWebView，下面讲解WKWebView的使用入门及入门的坑。
+
+
+快速入门
+
+123456WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds];//构造webView.autoresizingMask = UIViewAutoresizingFlexible">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WKWebView使用入门及填坑(持续更新)">
+<meta property="og:url" content="http://yoursite.com/2016/11/22/WKWebView使用入门及填坑(持续更新)/index.html">
+<meta property="og:site_name" content="love">
+<meta property="og:description" content="iOS 8.0苹果推出WebKit，用来替代UIWebView，下面讲解WKWebView的使用入门及入门的坑。
+
+
+快速入门
+
+123456WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds];//构造webView.autoresizingMask = UIViewAutoresizingFlexible">
+<meta property="og:updated_time" content="2016-12-11T14:37:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WKWebView使用入门及填坑(持续更新)">
+<meta name="twitter:description" content="iOS 8.0苹果推出WebKit，用来替代UIWebView，下面讲解WKWebView的使用入门及入门的坑。
+
+
+快速入门
+
+123456WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds];//构造webView.autoresizingMask = UIViewAutoresizingFlexible">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=d671a41f" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-WKWebView使用入门及填坑(持续更新)" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">WKWebView使用入门及填坑(持续更新)</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.11.22</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>d10</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://mountainhill.github.io/2016/11/22/WKWebView使用入门及填坑(持续更新)/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>iOS 8.0苹果推出WebKit，用来替代UIWebView，下面讲解WKWebView的使用入门及入门的坑。</p>
+<hr>
+<ul>
+<li>快速入门</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds];//构造</div><div class="line">webView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;//设置autoresizingMask</div><div class="line">webView.allowsBackForwardNavigationGestures = YES;//允许前进后退手势</div><div class="line">webView.navigationDelegate = self;</div><div class="line">[self.view addSubview: webView];//添加视图</div><div class="line">[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;http://www.jianshu.com&quot;]]];</div></pre></td></tr></table></figure>
+<ul>
+<li>常用代理<table border="1" style="border-color: gray;" rules="all"><br>          <tr style="height: 32px;"><br>              <th>WKWebView(WKNavigationDelegate)</th><br>              <th>UIWebView(UIWebViewDelegate)</th><br>          </tr><br>          <tr style="height: 30px;"><br>              <td style="padding-left: 8px;padding-right: 8px;">webView:decidePolicyForNavigationAction:decisionHandler:</td><br>              <td style="padding-left: 8px;padding-right: 8px;">webView:shouldStartLoadWithRequest:navigationType:</td><br>          </tr><br>          <tr style="height: 30px;"><br>              <td style="padding-left: 8px;padding-right: 8px;">webView:didStartProvisionalNavigation:</td><br>              <td style="padding-left: 8px;padding-right: 8px;">webViewDidStartLoad:</td><br>          </tr><br>          <tr style="height: 30px;"><br>              <td style="padding-left: 8px;padding-right: 8px;">webView:didFinishNavigation:</td><br>              <td style="padding-left: 8px;padding-right: 8px;">webViewDidFinishLoad:</td><br>          </tr><br>          <tr style="height: 30px;"><br>              <td style="padding-left: 8px;padding-right: 8px;">webView:didFailProvisionalNavigation:</td><br>              <td style="padding-left: 8px;padding-right: 8px;">webView:didFailLoadWithError:</td><br>          </tr><br>      </table>
+
+</li>
+</ul>
+<blockquote>
+<p><strong>warning：</strong><br><em>webView:decidePolicyForNavigationAction:decisionHandler:</em>是没有BOOL返回值的，而是根据decisionHandler(WKNavigationActionPolicyCancel/WKNavigationActionPolicyAllow)判断是否可执行。</p>
+</blockquote>
+<hr>
+<ul>
+<li>坑1：点击链接无反应</li>
+</ul>
+<p>我碰到的情况<code>&lt;a target=&quot;_blank&quot;&gt;</code> ,根据 <a href="http://www.w3school.com.cn/tags/att_a_target.asp" target="_blank" rel="external">w3school</a> 定义：<code>_blank 浏览器总在一个新打开、未命名的窗口中载入目标文档。</code> 可看出该类型的链接需要打开一个新的窗口（根据浏览器设置也可打开新的Tab）。只需设置<code>UIDelegate</code>并实现以下方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (nullable WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures &#123;</div><div class="line">    if (!navigationAction.targetFrame.isMainFrame) &#123;</div><div class="line">        [webView loadRequest:navigationAction.request];</div><div class="line">    &#125;</div><div class="line">    return nil;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>坑2: 弹框无反应</li>
+</ul>
+<p>我碰到情况 js 脚本<code>alert(&#39;xxxxx&#39;)</code>无反应。只需设置<code>UIDelegate</code>并实现以下方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler &#123;</div><div class="line">    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@&quot;提示&quot; message:message preferredStyle:UIAlertControllerStyleAlert];</div><div class="line">    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@&quot;Ok&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) &#123;</div><div class="line">        completionHandler();</div><div class="line">    &#125;];</div><div class="line">    [alert addAction:okAction];</div><div class="line">    [self showAlert:alert];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL result))completionHandler &#123;</div><div class="line">    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@&quot;提示&quot; message:message preferredStyle:UIAlertControllerStyleAlert];</div><div class="line">    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@&quot;Ok&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) &#123;</div><div class="line">        completionHandler(YES);</div><div class="line">    &#125;];</div><div class="line">    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@&quot;Cancel&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) &#123;</div><div class="line">        completionHandler(NO);</div><div class="line">    &#125;];</div><div class="line">    [alert addAction:cancelAction];</div><div class="line">    [alert addAction:okAction];</div><div class="line">    [self showAlert:alert];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(nullable NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * _Nullable result))completionHandler &#123;</div><div class="line">    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@&quot;请输入&quot; message:prompt preferredStyle:UIAlertControllerStyleAlert];</div><div class="line">    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) &#123;</div><div class="line">        textField.placeholder = defaultText;</div><div class="line">    &#125;];</div><div class="line">    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@&quot;Ok&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) &#123;</div><div class="line">        UITextField *textField = alert.textFields.lastObject;</div><div class="line">        completionHandler(textField.text);</div><div class="line">    &#125;];</div><div class="line">    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@&quot;Cancel&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) &#123;</div><div class="line">        completionHandler(nil);</div><div class="line">    &#125;];</div><div class="line">    [alert addAction:cancelAction];</div><div class="line">    [alert addAction:okAction];</div><div class="line">    [self showAlert:alert];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)showAlert:(UIAlertController *)alert &#123;</div><div class="line">    UIViewController *vc  = [UIApplication sharedApplication].keyWindow.rootViewController;</div><div class="line">    [vc presentViewController:alert animated:YES completion:nil];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>坑3：首页加载失败无法reload</li>
+</ul>
+<p>在断网情况下，打开网站首页，请求失败，调用<code>reload()</code>方法无效。对于这种情况只有重新发起请求：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;http://www.jianshu.com&quot;]]];</div></pre></td></tr></table></figure>
+<ul>
+<li>坑4：B右滑返回A失败后界面会变成B，但backForwardList只有A</li>
+</ul>
+<p>先成功请求主页A，点击链接成功跳转至B，切换至后台，手机置为飞行模式，打开程序，右滑返回，界面会先显示A然后突然变成B，并且backForwardList中只有A。对于这种情况只需写一个错误界面，解决如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error &#123;</div><div class="line">    NSString *html = @&quot;&lt;html&gt;测试&lt;/html&gt;&quot;;</div><div class="line">    [webView loadHTMLString:html baseURL:[NSURL fileURLWithPath:nil</div><div class="line">        ]];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>坑5：在 <code>坑4</code> 的状态下reload无效</li>
+</ul>
+<p>该问题同 <code>坑3</code>，但处理方法不一样，标准是判断<code>webView.backForwardList.currentItem</code>是否为nil，对于非nil情况的刷新如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[webView goToBackForwardListItem:webView.backForwardList.currentItem];</div></pre></td></tr></table></figure>
+<hr>
+<p style="color:rgb(47,47,47);background-color: rgb(245,245,245);padding: 10px;">结语：WKWebView在性能上做了很大优化，但有些bug也是由于资源的释放导致的。以上只是用到WebKit的很小一部分，cookie，资源共享，缓存，secure，Native2Web通信等等都未使用，Anyway，碰到需求再说，满足当前的开发即可，我相信后面的坑也是数不清的。</p><br><p style="font-size:80%;">PS：代码后续会放到github上，方便自己汇总。</p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持d10</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://yoursite.com/2016/11/22/WKWebView使用入门及填坑(持续更新)/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
