@@ -1,0 +1,32 @@
+body {
+	font-size: medium;
+}
+div {
+	margin-left: 20px;
+	margin-right: 20px;
+	border-bottom: 1px solid #e6e6e6;
+}
+a {
+	text-decoration: none;
+}
+a:link,a:visited {
+	color: #3a3a3a;
+}
+a:hover {
+	color: #fc6b39;
+}
+p {
+	line-height: 1.8em;
+	color: #666666;
+}
+header {
+	font-size: 1.4em;
+	margin: 20px 0;
+}
+time {
+	color: #888888;
+	font-size: 0.8em;
+}
+
+  
+  
