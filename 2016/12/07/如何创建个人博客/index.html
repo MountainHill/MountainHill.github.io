@@ -27,7 +27,7 @@ Git
 运行命令(Mac平台)
 
 
-123456$ npm install -g hex">
+$ npm install -g hexo-cli">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何创建个人博客">
 <meta property="og:url" content="http://yoursite.com/2016/12/07/如何创建个人博客/index.html">
@@ -44,7 +44,7 @@ Git
 运行命令(Mac平台)
 
 
-123456$ npm install -g hex">
+$ npm install -g hexo-cli">
 <meta property="og:updated_time" content="2016-12-09T06:53:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何创建个人博客">
@@ -60,7 +60,7 @@ Git
 运行命令(Mac平台)
 
 
-123456$ npm install -g hex">
+$ npm install -g hexo-cli">
 
   
 
@@ -78,16 +78,6 @@ Git
   
 
   
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
 
 
   
@@ -163,11 +153,6 @@ Git
 
 
       
-        <span>
-          <i class="icon-comment"></i>
-          <a href="http://mountainhill.github.io/2016/12/07/如何创建个人博客/#disqus_thread"></a>
-        </span>
-      
 
       
       <i class="fa fa-eye"></i> 
@@ -177,6 +162,9 @@ Git
         </span>
       
 
+      
+        <i class="icon-comment"></i> 
+        <span class="ds-thread-count" data-thread-key="post-如何创建个人博客"><i class="fa fa-spinner fa-spin"></i></span> 条评论
       
       
     </div>
@@ -196,7 +184,7 @@ Git
 <li><p>运行命令(Mac平台)</p>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli 	//安装hexo命令行工具</div><div class="line">$ hexo init &lt;folder&gt;		//创建博客文件夹</div><div class="line">$ <span class="built_in">cd</span> &lt;folder&gt;		        //切换至目标文件夹</div><div class="line">$ npm install			//安装博客框架</div><div class="line">$ hexo generate		        //生成静态文件</div><div class="line">$ hexo server			//运行</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ npm install -g hexo-cli 	//安装hexo命令行工具</div><div class="line">$ hexo init &lt;folder&gt;		//创建博客文件夹</div><div class="line">$ <span class="built_in">cd</span> &lt;folder&gt;		        //切换至目标文件夹</div><div class="line">$ npm install			//安装博客框架</div><div class="line">$ hexo generate		        //生成静态文件</div><div class="line">$ hexo server			//运行</div></pre></td></tr></table></figure>
 <ul>
 <li>浏览器打开 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></li>
 </ul>
@@ -272,33 +260,29 @@ Git
   
       <div class="fexo-comments comments-post">
     
-  <section class="disqus-comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-如何创建个人博客" 
+      data-title="如何创建个人博客" data-url="http://yoursite.com/2016/12/07/如何创建个人博客/index.html"></div>
+    <!-- 多说评论框 end -->
   </section>
 
-  <script>
-    var disqus_shortname = 'forsigner';
-    
-    var disqus_url = 'http://yoursite.com/2016/12/07/如何创建个人博客/';
-    
-    (function(){
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"basket_123"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
   </script>
-
-  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
-
-
-
-    
-
-
 
 
   </div>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Objective-C定义可变长参数方法 | love</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="forsigner,前端,设计,Hexo主题,前端开发,用户体验,设计,frontend,design,nodejs,JavaScript" />
+  
+
+  <meta name="description" content="背景今天使用NSArray构造方法arrayWithObjects感到很奇怪（原谅我以前没感觉），这个方法如何做到传递可变长参数呢？
+授之以鱼
+方法定义
+
+- (void)testVariableArgumentList:(NSString *)value,... NS_REQUIRES_NIL_TERMINATION;
+
+方法实现
+
+- (void)testVariableArgumentLis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Objective-C定义可变长参数方法">
+<meta property="og:url" content="http://yoursite.com/2016/12/13/Objective-C定义可变长参数方法/index.html">
+<meta property="og:site_name" content="love">
+<meta property="og:description" content="背景今天使用NSArray构造方法arrayWithObjects感到很奇怪（原谅我以前没感觉），这个方法如何做到传递可变长参数呢？
+授之以鱼
+方法定义
+
+- (void)testVariableArgumentList:(NSString *)value,... NS_REQUIRES_NIL_TERMINATION;
+
+方法实现
+
+- (void)testVariableArgumentLis">
+<meta property="og:updated_time" content="2016-12-13T03:22:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Objective-C定义可变长参数方法">
+<meta name="twitter:description" content="背景今天使用NSArray构造方法arrayWithObjects感到很奇怪（原谅我以前没感觉），这个方法如何做到传递可变长参数呢？
+授之以鱼
+方法定义
+
+- (void)testVariableArgumentList:(NSString *)value,... NS_REQUIRES_NIL_TERMINATION;
+
+方法实现
+
+- (void)testVariableArgumentLis">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=d671a41f" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#授之以鱼"><span class="toc-text">授之以鱼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#授之以渔"><span class="toc-text">授之以渔</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Objective-C定义可变长参数方法" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Objective-C定义可变长参数方法</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.12.13</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>d10</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+        <i class="icon-comment"></i> 
+        <span class="ds-thread-count" data-thread-key="post-Objective-C定义可变长参数方法"><i class="fa fa-spinner fa-spin"></i></span> 条评论
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>今天使用NSArray构造方法<code>arrayWithObjects</code>感到很奇怪（原谅我以前没感觉），这个方法如何做到传递可变长参数呢？</p>
+<h2 id="授之以鱼"><a href="#授之以鱼" class="headerlink" title="授之以鱼"></a>授之以鱼</h2><ul>
+<li>方法定义</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)testVariableArgumentList:(<span class="built_in">NSString</span> *)value,... <span class="built_in">NS_REQUIRES_NIL_TERMINATION</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>方法实现</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)testVariableArgumentList:(<span class="built_in">NSString</span> *)value,... &#123;</div><div class="line">    <span class="built_in">NSInteger</span> total = value.integerValue;</div><div class="line">    </div><div class="line">    va_list list;</div><div class="line">    <span class="built_in">NSString</span> *arg;</div><div class="line">    </div><div class="line">    va_start(list, value);</div><div class="line">    <span class="keyword">while</span> ((arg = va_arg(list, <span class="built_in">NSString</span> *))) &#123;</div><div class="line">        total += arg.integerValue;</div><div class="line">    &#125;</div><div class="line">    va_end(list);</div><div class="line">    </div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"*******%@"</span>,@(total));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="授之以渔"><a href="#授之以渔" class="headerlink" title="授之以渔"></a>授之以渔</h2><figure class="highlight c"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*** va_list**    Define the type for a variable that will  hold a pointer to**    the variable portion of the argument list.  char * is used**    because arithmetic on them is not scaled.*/</span><span class="keyword">typedef</span>     <span class="keyword">char</span>  *va_list;</div><div class="line"><span class="comment">/*** va_start**    A macro to initialize a va_list variable to point to the**    first of the variable arguments on the stack.*/</span><span class="meta">#<span class="meta-keyword">define</span>     va_start(arg_ptr,arg)  arg_ptr = (char *)&amp;arg + sizeof( arg )</span></div><div class="line"><span class="comment">/*** va_arg**    A macro that returns the value of the next variable argument**    on the stack; it also increments arg_ptr to the next**    argument.*/</span><span class="meta">#<span class="meta-keyword">define</span>     va_arg(arg_ptr,type)    *((type *)arg_ptr)++</span></div><div class="line"><span class="comment">/*** va_end**    Called after the last access to variable arguments; nothing**    needs to be done in this environment.*/</span><span class="meta">#<span class="meta-keyword">define</span>     va_end(arg_ptr)</span></div></pre></td></tr></table></figure>
+<p>-《Pointers on C》 <em>Kenneth Reek</em></p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持d10</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-Objective-C定义可变长参数方法" 
+      data-title="Objective-C定义可变长参数方法" data-url="http://yoursite.com/2016/12/13/Objective-C定义可变长参数方法/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"basket_123"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
