@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>阿里一轮面试题 | love</title>
+  <title>源码学习准则 | love</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -15,25 +15,55 @@
     <meta name="keywords" content="forsigner,前端,设计,Hexo主题,前端开发,用户体验,设计,frontend,design,nodejs,JavaScript" />
   
 
-  <meta name="description" content="今天接到阿里蚂蚁金服电话面试，结果不理想，基本答不出来，可能是偏应用框架的搭建，追求的是快速开发，对技术细节没有研究，不管怎样，先记下，再逐个研究，下次面试的时候保不准有用。
-Q：UITableView性能优化方案
+  <meta name="description" content="阿里电话面试中有一项就是是否阅读过开源库源码，一直没读过，既然面试要求，那咱就读一读。既然要读，那就要确立好方针。
 
-貌似这道题是面试必问题，我也最反感的是性能优化，因为我平时极少碰到这种情况，甚至在写聊天应用时都没有，因为你再复杂，只要确定了该渲染成啥样，只需把计算frame的方法计算一次保存起来">
+读什么
+这个阿里面试问到了AFNetWorking,那就从他开始。
+
+怎么读
+
+用到哪读到哪
+读到系统库那一层
+
+
+
+
+开源库的存在是方便你的工作，可用可不用，所以应该先假设没有开源库，你要做什么，给你自己做，要设计什么，然后跟开源库做比较，这样才能读的通读的透，千万不要一开始就一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阿里一轮面试题">
-<meta property="og:url" content="http://yoursite.com/2017/01/19/阿里一轮面试题/index.html">
+<meta property="og:title" content="源码学习准则">
+<meta property="og:url" content="http://yoursite.com/2017/01/22/源码学习准则/index.html">
 <meta property="og:site_name" content="love">
-<meta property="og:description" content="今天接到阿里蚂蚁金服电话面试，结果不理想，基本答不出来，可能是偏应用框架的搭建，追求的是快速开发，对技术细节没有研究，不管怎样，先记下，再逐个研究，下次面试的时候保不准有用。
-Q：UITableView性能优化方案
+<meta property="og:description" content="阿里电话面试中有一项就是是否阅读过开源库源码，一直没读过，既然面试要求，那咱就读一读。既然要读，那就要确立好方针。
 
-貌似这道题是面试必问题，我也最反感的是性能优化，因为我平时极少碰到这种情况，甚至在写聊天应用时都没有，因为你再复杂，只要确定了该渲染成啥样，只需把计算frame的方法计算一次保存起来">
-<meta property="og:updated_time" content="2017-01-19T13:36:30.000Z">
+读什么
+这个阿里面试问到了AFNetWorking,那就从他开始。
+
+怎么读
+
+用到哪读到哪
+读到系统库那一层
+
+
+
+
+开源库的存在是方便你的工作，可用可不用，所以应该先假设没有开源库，你要做什么，给你自己做，要设计什么，然后跟开源库做比较，这样才能读的通读的透，千万不要一开始就一">
+<meta property="og:updated_time" content="2017-01-22T05:46:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿里一轮面试题">
-<meta name="twitter:description" content="今天接到阿里蚂蚁金服电话面试，结果不理想，基本答不出来，可能是偏应用框架的搭建，追求的是快速开发，对技术细节没有研究，不管怎样，先记下，再逐个研究，下次面试的时候保不准有用。
-Q：UITableView性能优化方案
+<meta name="twitter:title" content="源码学习准则">
+<meta name="twitter:description" content="阿里电话面试中有一项就是是否阅读过开源库源码，一直没读过，既然面试要求，那咱就读一读。既然要读，那就要确立好方针。
 
-貌似这道题是面试必问题，我也最反感的是性能优化，因为我平时极少碰到这种情况，甚至在写聊天应用时都没有，因为你再复杂，只要确定了该渲染成啥样，只需把计算frame的方法计算一次保存起来">
+读什么
+这个阿里面试问到了AFNetWorking,那就从他开始。
+
+怎么读
+
+用到哪读到哪
+读到系统库那一层
+
+
+
+
+开源库的存在是方便你的工作，可用可不用，所以应该先假设没有开源库，你要做什么，给你自己做，要设计什么，然后跟开源库做比较，这样才能读的通读的透，千万不要一开始就一">
 
   
 
@@ -100,14 +130,14 @@ Q：UITableView性能优化方案
 
 
 <div class="content content-post CENTER">
-   <article id="post-阿里一轮面试题" class="article article-type-post" itemprop="blogPost">
+   <article id="post-源码学习准则" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">阿里一轮面试题</h1>
+    <h1 class="post-title">源码学习准则</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2017.01.19</span>
+        <span>2017.01.22</span>
       </span>
 
       
@@ -132,7 +162,7 @@ Q：UITableView性能优化方案
 
       
         <i class="icon-comment"></i> 
-        <span class="ds-thread-count" data-thread-key="post-阿里一轮面试题"><i class="fa fa-spinner fa-spin"></i></span> 条评论
+        <span class="ds-thread-count" data-thread-key="post-源码学习准则"><i class="fa fa-spinner fa-spin"></i></span> 条评论
       
       
     </div>
@@ -140,22 +170,20 @@ Q：UITableView性能优化方案
 
   <div class="article-content">
     
-      <p>今天接到阿里蚂蚁金服电话面试，结果不理想，基本答不出来，可能是偏应用框架的搭建，追求的是快速开发，对技术细节没有研究，不管怎样，先记下，再逐个研究，下次面试的时候保不准有用。</p>
-<p>Q：<strong>UITableView性能优化方案</strong></p>
+      <p>阿里电话面试中有一项就是是否阅读过开源库源码，一直没读过，既然面试要求，那咱就读一读。既然要读，那就要确立好方针。</p>
+<ul>
+<li><p><strong>读什么</strong></p>
+<p>这个阿里面试问到了AFNetWorking,那就从他开始。</p>
+</li>
+<li><p><strong>怎么读</strong></p>
+<ol>
+<li>用到哪读到哪</li>
+<li>读到系统库那一层</li>
+</ol>
+</li>
+</ul>
 <blockquote>
-<p>貌似这道题是面试必问题，我也最反感的是性能优化，因为我平时极少碰到这种情况，甚至在写聊天应用时都没有，因为你再复杂，只要确定了该渲染成啥样，只需把计算frame的方法计算一次保存起来，就不会有卡顿，只要在4s上都无法感知卡顿，那你还优化啥？0.01毫秒跟0.001毫秒对应用层来说有区别吗？再高端点的直接生成一张图，用layer添加，再再高端点的就是滑到哪里渲染哪里。实际碰到卡顿无非就是打印时间或instrument分析下，找找卡顿原因，99.99%的都是不需要的。</p>
-</blockquote>
-<p>Q：<strong>AFNetworking源码分析</strong></p>
-<blockquote>
-<p>这个确实没看过源码，留作任务，看看也无妨。</p>
-</blockquote>
-<p>Q：<strong>自己实现UITableView</strong></p>
-<blockquote>
-<p>这个也没实现过，留作任务实现。</p>
-</blockquote>
-<p>Q：<strong>UIView树知不知道</strong></p>
-<blockquote>
-<p>这个真不知道是啥，后来百度了下，尼玛这不就是界面断点调试的时候一层层view么，难道是考查要怎么实现UIView树？留作任务，之前用Reveal就好奇怎么做到的。</p>
+<p>开源库的存在是方便你的工作，可用可不用，所以应该先假设没有开源库，你要做什么，给你自己做，要设计什么，然后跟开源库做比较，这样才能读的通读的透，千万不要一开始就一行一行读源码，如果谁这么教你，那就是在害你。</p>
 </blockquote>
 
     
@@ -231,8 +259,8 @@ Q：UITableView性能优化方案
     
   <section class="duoshuo-comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="post-阿里一轮面试题" 
-      data-title="阿里一轮面试题" data-url="http://yoursite.com/2017/01/19/阿里一轮面试题/index.html"></div>
+    <div class="ds-thread" data-thread-key="post-源码学习准则" 
+      data-title="源码学习准则" data-url="http://yoursite.com/2017/01/22/源码学习准则/index.html"></div>
     <!-- 多说评论框 end -->
   </section>
 
