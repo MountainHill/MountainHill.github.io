@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>OC没有namespace是一场灾难 | love</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="forsigner,前端,设计,Hexo主题,前端开发,用户体验,设计,frontend,design,nodejs,JavaScript" />
+  
+
+  <meta name="description" content="众所周知，OC中是没有namespace的，一直没觉得没有也没啥，因为一直以来每个项目都是一个团队甚至一个人完成的。然而，新加入的一家公司的第一个工作让我对没有namespace发生了重大变化。
+事情是这样的，因为刚加入的原因，分配的任务是集成另一家公司提供的SDK，平时集成SDK多了，没觉得这有什么难度，然而我没想到一段受虐之路开始了。在此我不对技术好坏做评价，只说实际情况以及在这种情况下如何解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OC没有namespace是一场灾难">
+<meta property="og:url" content="http://yoursite.com/2017/05/20/OC没有namespace是一场灾难/index.html">
+<meta property="og:site_name" content="love">
+<meta property="og:description" content="众所周知，OC中是没有namespace的，一直没觉得没有也没啥，因为一直以来每个项目都是一个团队甚至一个人完成的。然而，新加入的一家公司的第一个工作让我对没有namespace发生了重大变化。
+事情是这样的，因为刚加入的原因，分配的任务是集成另一家公司提供的SDK，平时集成SDK多了，没觉得这有什么难度，然而我没想到一段受虐之路开始了。在此我不对技术好坏做评价，只说实际情况以及在这种情况下如何解">
+<meta property="og:updated_time" content="2017-05-20T03:09:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OC没有namespace是一场灾难">
+<meta name="twitter:description" content="众所周知，OC中是没有namespace的，一直没觉得没有也没啥，因为一直以来每个项目都是一个团队甚至一个人完成的。然而，新加入的一家公司的第一个工作让我对没有namespace发生了重大变化。
+事情是这样的，因为刚加入的原因，分配的任务是集成另一家公司提供的SDK，平时集成SDK多了，没觉得这有什么难度，然而我没想到一段受虐之路开始了。在此我不对技术好坏做评价，只说实际情况以及在这种情况下如何解">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=d671a41f" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-OC没有namespace是一场灾难" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">OC没有namespace是一场灾难</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.05.20</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>d10</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>众所周知，OC中是没有namespace的，一直没觉得没有也没啥，因为一直以来每个项目都是一个团队甚至一个人完成的。然而，新加入的一家公司的第一个工作让我对没有namespace发生了重大变化。</p>
+<p>事情是这样的，因为刚加入的原因，分配的任务是集成另一家公司提供的SDK，平时集成SDK多了，没觉得这有什么难度，然而我没想到一段受虐之路开始了。在此我不对技术好坏做评价，只说实际情况以及在这种情况下如何解决问题。我暂且称呼提供SDK的公司叫A吧，A提供SDK的形式是这样的，核心模块加依赖pod，这时我碰到的第一个问题就是pod中大多数第三方库的版本号跟我当前项目pod中第三方库版本号不一致，举例,AFNetworking A的版本号是1.8.4，我的是3.1.0,pod在遇到相同的第三方库时如果当高版本没有指定版本号采取的解决方法是拉去低版本，这下我就疯了，改名吧吧。第二个问题，我们知道在编写SDK时可以不暴露文件，但我的项目里也用了他隐藏的第三方库，编译的时候没问题，但运行的时候就会报重复xxx.o的错，我又疯了，改名吧。第三个问题，A和我都用到了一个第三方解压缩库，是.c文件，很不幸的是我又做了些定制，编译也没有问题，但是运行的时候只会调一个，但不确定会调哪个，这下我又疯了，改名吧。</p>
+<p>我们看到，这三个问题全部是由于没有namespace导致的。有两种解决方案，1是做SDK时把需要用到的第三方库作为源码并且改名添加到SDK中。2是用swift，至少这件事给了我一个学习swift的理由。</p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持d10</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
