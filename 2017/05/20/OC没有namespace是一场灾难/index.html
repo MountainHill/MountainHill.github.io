@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="love">
 <meta property="og:description" content="众所周知，OC中是没有namespace的，一直没觉得没有也没啥，因为一直以来每个项目都是一个团队甚至一个人完成的。然而，新加入的一家公司的第一个工作让我对没有namespace发生了重大变化。
 事情是这样的，因为刚加入的原因，分配的任务是集成另一家公司提供的SDK，平时集成SDK多了，没觉得这有什么难度，然而我没想到一段受虐之路开始了。在此我不对技术好坏做评价，只说实际情况以及在这种情况下如何解">
-<meta property="og:updated_time" content="2017-05-20T03:09:59.000Z">
+<meta property="og:updated_time" content="2017-07-06T02:42:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC没有namespace是一场灾难">
 <meta name="twitter:description" content="众所周知，OC中是没有namespace的，一直没觉得没有也没啥，因为一直以来每个项目都是一个团队甚至一个人完成的。然而，新加入的一家公司的第一个工作让我对没有namespace发生了重大变化。
@@ -124,6 +124,10 @@
       <p>众所周知，OC中是没有namespace的，一直没觉得没有也没啥，因为一直以来每个项目都是一个团队甚至一个人完成的。然而，新加入的一家公司的第一个工作让我对没有namespace发生了重大变化。</p>
 <p>事情是这样的，因为刚加入的原因，分配的任务是集成另一家公司提供的SDK，平时集成SDK多了，没觉得这有什么难度，然而我没想到一段受虐之路开始了。在此我不对技术好坏做评价，只说实际情况以及在这种情况下如何解决问题。我暂且称呼提供SDK的公司叫A吧，A提供SDK的形式是这样的，核心模块加依赖pod，这时我碰到的第一个问题就是pod中大多数第三方库的版本号跟我当前项目pod中第三方库版本号不一致，举例,AFNetworking A的版本号是1.8.4，我的是3.1.0,pod在遇到相同的第三方库时如果当高版本没有指定版本号采取的解决方法是拉去低版本，这下我就疯了，改名吧吧。第二个问题，我们知道在编写SDK时可以不暴露文件，但我的项目里也用了他隐藏的第三方库，编译的时候没问题，但运行的时候就会报重复xxx.o的错，我又疯了，改名吧。第三个问题，A和我都用到了一个第三方解压缩库，是.c文件，很不幸的是我又做了些定制，编译也没有问题，但是运行的时候只会调一个，但不确定会调哪个，这下我又疯了，改名吧。</p>
 <p>我们看到，这三个问题全部是由于没有namespace导致的。有两种解决方案，1是做SDK时把需要用到的第三方库作为源码并且改名添加到SDK中。2是用swift，至少这件事给了我一个学习swift的理由。</p>
+<p>##补充(2017-07-06)</p>
+<p>今天又遇到一个因OC中没有namesapce导致的极难调试的问题。定义了一个A继承UIView，在xib中拖一个A，A中有一个delegate属性</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">@property(noatomic, weak) IBOutlet id&lt;UITableViewDelegate&gt; delegate</div></pre></td></tr></table></figure>
+<p>将delegate直接连到view controller，运行程序crash，错误为 <strong><code>this class is not key value coding-compliant for the key xxx</code></strong>，具体的排查过程就略过，问题的原因就是一个动态OC framework中也定义了A类且未暴露，排查的过程中有一个很有意思的现象，就是debug时会看到A的实例类跟我们定义的完全一样，只说属性为野指针，而用具体代码去取它的属性，却是framework中A的属性，所以调试窗苹果是做了判断的。如果改用swift创建动态库就没有问题，所以OC中是没有真正意义上的命名空间的。</p>
 
     
   </div>
